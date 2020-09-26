@@ -1,4 +1,4 @@
-
+const socket = io('/');
 let myVideoStream;
 const myvideo = document.createElement('video');
 myvideo.muted = true;
@@ -11,6 +11,7 @@ navigator.mediaDevices.getUserMedia({
     addvideoStream(myvideo,stream)
 });
 
+socket.emit("join-room");
 
 const addvideoStream = (video,stream)=>{
     video.srcObject = stream;
