@@ -1,4 +1,4 @@
-const socket = io('/');
+const socket = io("/");
 let myVideoStream;
 const myvideo = document.createElement('video');
 myvideo.muted = true;

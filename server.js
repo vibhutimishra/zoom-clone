@@ -1,7 +1,8 @@
 const express= require("express");
 const app = express();
 var uuid = require("uuid");
-const io = require("socket.io")(server)
+const server = require("http").Server(app);
+const io = require("socket.io").listen(server);
 
 app.use(express.static('public'))
 
@@ -17,10 +18,10 @@ app.get("/:room",function(req,res){
 
 io.on("connection", socket =>{
     socket.on("join-room",()=>{
-
+        console.log("You have joined to the room");
     });
 });
 
-app.listen("4000", function(req, res){
+app.listen(3000, function(req, res){
     console.log("Server Started");
 });
