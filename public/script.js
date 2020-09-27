@@ -1,4 +1,4 @@
-const socket = io.connect("localhost:3000");
+const socket = io.connect("http://localhost:3000");
 let myVideoStream;
 const myvideo = document.createElement('video');
 myvideo.muted = true;
