@@ -31,7 +31,7 @@ navigator.mediaDevices.getUserMedia({
 
 
 peer.on('open',id=>{
-    socket.emit("join-room", ROOMID,id);
+    socket.emit("join-room", ROOMID, id);
 });
 
 
