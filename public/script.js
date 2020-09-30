@@ -1,8 +1,9 @@
 const socket = io.connect("http://localhost:3000");
 let myVideoStream;
-const myvideo = document.createElement('video');
+const myvideo = document.createElement("video");
 myvideo.muted = true;
 
+<<<<<<< HEAD
 
 var peer = new Peer(undefined,{
     path:'/peerjs',
@@ -50,3 +51,22 @@ const addvideoStream = (video,stream)=>{
     });
     document.getElementById("video-grid").append(video);
 }
+=======
+navigator.mediaDevices
+	.getUserMedia({
+		video: true,
+		audio: true,
+	})
+	.then(stream => {
+		myVideoStream = stream;
+		addvideoStream(myvideo, stream);
+	});
+
+const addvideoStream = (video, stream) => {
+	video.srcObject = stream;
+	video.addEventListener("loadedmetadata", function () {
+		video.play();
+	});
+	document.getElementById("video-grid").append(video);
+};
+>>>>>>> 4fb778bc1f559688d456a4be4133a0154b89497c
