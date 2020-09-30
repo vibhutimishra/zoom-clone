@@ -18,9 +18,8 @@ const server = app.listen(3000, function (req, res) {
 });
 const io = require("socket.io").listen(server);
 io.on("connection", socket => {
-	socket.on("join-room", (roomId, userId) => {
+	socket.on("join-room", (roomId) => {
 		console.log(roomId);
 		socket.join(roomId);
-		socket.to(roomId).broadcast.emit("user-connected", userId);
 	});
 });
