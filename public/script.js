@@ -31,7 +31,7 @@ navigator.mediaDevices
 			call.answer(stream)
 			const video = document.createElement("video")
 			call.on('stream',userVideoStream=>{
-				addvideoStream(video,userId)
+				addvideoStream(video,userVideoStream)
 			})
 		})
 
