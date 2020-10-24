@@ -10,7 +10,7 @@ myPeer.on('open', id=>{
 });
 
 socket.on('user-connected', userId =>{
-	console.log("user connected "+userId);
+	console.log("user connected "+ userId);
 });
 
 const videoGrid = document.getElementById('video-grid');
@@ -22,8 +22,7 @@ navigator.mediaDevices
 	.getUserMedia({
 		video: true,
 		audio: true,
-	})
-	.then(stream => {
+	}).then(stream => {
 		myVideoStream = stream;
 		addvideoStream(myvideo, stream);
 
@@ -32,8 +31,8 @@ navigator.mediaDevices
 			const video = document.createElement("video")
 			call.on('stream',userVideoStream=>{
 				addvideoStream(video,userVideoStream)
-			})
-		})
+			});
+		});
 
 		socket.on("user-connected", userId=>{
 			connectToNewUser(userId,stream)
@@ -48,7 +47,7 @@ function connectToNewUser(userId,stream){
 	})
 	call.on('close',()=>{
 		video.remove()
-	})
+	});
 }
 
 function addvideoStream(video, stream){
