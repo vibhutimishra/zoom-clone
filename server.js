@@ -12,13 +12,17 @@ app.get("/",function(req,res){
 	res.status(200).redirect("/" + b);
 
 });
+
+
 app.get("/:room",function(req,res){
 	res.render('room.ejs',{roomId: req.params.room})
 });
 
+
 io.on("connection", socket => {
 	socket.on("join-room", (roomId, userId) => {
-		console.log(roomId,userId);
+		console.log("RoomId is: "+roomId);
+		console.log("UserId is: "+userId);
 		socket.join(roomId);
 		socket.to(roomId).broadcast.emit('user-connected',userId)
 	});
