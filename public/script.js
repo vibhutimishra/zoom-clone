@@ -39,17 +39,21 @@ navigator.mediaDevices
 		});
 	});
 
+
+//whenever new user added accept the video stream and create video-grid
 function connectToNewUser(userId,stream){
 	const call= myPeer.call(userId,stream)
 	const video = document.createElement('video')
 	call.on("stream",userVideoStream=>{
 		addvideoStream(video,userVideoStream)
 	})
+	// when user disconnected close the video immidiately
 	call.on('close',()=>{
 		video.remove()
 	});
 }
 
+//creating video-grid out video stream
 function addvideoStream(video, stream){
 	video.srcObject = stream;
 	video.addEventListener("loadedmetadata", ()=>{
